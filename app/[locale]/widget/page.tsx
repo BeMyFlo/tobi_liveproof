@@ -3,6 +3,8 @@
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 
+export const dynamic = "force-dynamic";
+
 export default function WidgetPage() {
   const searchParams = useSearchParams();
   const [count, setCount] = useState(3);

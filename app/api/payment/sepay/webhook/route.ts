@@ -5,9 +5,12 @@ import Payment from '@/models/Payment';
 import crypto from 'crypto';
 
 export async function POST(req: NextRequest) {
+  console.log('--- SEPAY WEBHOOK: Incoming Request ---');
   try {
     const body = await req.json();
-    const signature = req.headers.get('x-sepay-signature'); // Some gateways use headers
+    console.log('SePay Payload:', JSON.stringify(body, null, 2));
+
+    const signature = req.headers.get('x-sepay-signature');
     
     // SePay Webhook Payload structure example:
     // {

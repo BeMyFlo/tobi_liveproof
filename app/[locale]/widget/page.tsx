@@ -1,4 +1,4 @@
-import WidgetPreview from '@/components/WidgetPreview';
+import WidgetPreview from '../../../components/WidgetPreview';
 import { setRequestLocale } from 'next-intl/server';
 
 // Dòng này hoạt động mạnh mẽ nhất ở đây (Server Component)

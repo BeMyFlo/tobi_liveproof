@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from 'react';
-import DashboardLayout from '@/components/dashboard/DashboardLayout';
 import { useTranslations } from 'next-intl';
 import { Check, Zap, Rocket, Crown } from 'lucide-react';
 
@@ -85,7 +84,6 @@ export default function BillingPage() {
   };
 
   return (
-    <DashboardLayout>
       <div className="space-y-12 animate-in fade-in slide-in-from-bottom-4 duration-700">
         <header className="text-center">
           <h1 className="text-4xl font-black tracking-tight mb-4">{t('title')}</h1>
@@ -150,6 +148,5 @@ export default function BillingPage() {
            </button>
         </div>
       </div>
-    </DashboardLayout>
   );
 }

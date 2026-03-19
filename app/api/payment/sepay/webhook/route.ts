@@ -23,22 +23,31 @@ export async function POST(req: NextRequest) {
     // For now, we use the 'code' to match our record. 
     // In production, we SHOULD verify the signature from SePay.
     
-    const { code, amount_in } = body;
-    if (!code) return NextResponse.json({ success: false, message: 'Missing code' }, { status: 400 });
+    const { code, amount_in, transaction_content } = body;
+    if (!code && !transaction_content) return NextResponse.json({ success: false, message: 'Missing transaction data' }, { status: 400 });
 
     await dbConnect();
 
-    // 2. Find the pending payment
-    // We try to match either from the strict 'code' field or the 'transaction_content'
-    const payment = await Payment.findOne({ 
+    // 2. Find the pending payment - Try strict code first, then search in content
+    let payment = await Payment.findOne({ 
       memo: code,
       status: 'PENDING'
     });
 
+    if (!payment && transaction_content) {
+      // Fallback: search for our LP_ pattern in content
+      const match = transaction_content.match(/LP_\d+/);
+      if (match) {
+        payment = await Payment.findOne({ 
+          memo: match[0],
+          status: 'PENDING'
+        });
+      }
+    }
+
     if (!payment) {
-        // Fallback: search in transaction content if code is missing but memo is in content
-        console.log(`Payment not found with code: ${code}. Checking transaction_content...`);
-        return NextResponse.json({ success: false, message: 'Payment record not found' }, { status: 404 });
+        console.log(`Payment not found. Incoming Code: ${code}, Content: ${transaction_content}`);
+        return NextResponse.json({ success: false, message: 'Payment record not found or already processed' }, { status: 404 });
     }
 
     // 3. Verify Amount

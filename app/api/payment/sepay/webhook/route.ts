@@ -12,21 +12,13 @@ export async function POST(req: NextRequest) {
 
     const signature = req.headers.get('x-sepay-signature');
     
-    // SePay Webhook Payload structure example:
-    // {
-    //   "id": 12345,
-    //   "gateway": "vietcombank",
-    //   "amount_in": 79000,
-    //   "code": "LP_123456", -> This is our memo/orderCode
-    //   "transaction_content": "LP_123456 ..."
-    // }
+    // SePay Webhook Payload structure can vary. Handling both direct and nested formats:
+    const code = body.code || body.order?.order_invoice_number;
+    const amount_in = body.amount_in || body.transaction?.transaction_amount;
+    const transaction_content = body.transaction_content || body.order?.order_description;
 
-    // --- 1. Basic Verification ---
-    // (Note: If SePay sends a secret token in the body, verify it here)
-    // For now, we use the 'code' to match our record. 
-    // In production, we SHOULD verify the signature from SePay.
-    
-    const { code, amount_in, transaction_content } = body;
+    console.log(`Extracted Code: ${code}, Amount: ${amount_in}`);
+
     if (!code && !transaction_content) return NextResponse.json({ success: false, message: 'Missing transaction data' }, { status: 400 });
 
     await dbConnect();
@@ -67,7 +59,7 @@ export async function POST(req: NextRequest) {
 
     // 5. Mark Payment as PAID
     payment.status = 'PAID';
-    payment.paymentLinkId = body.id; // Store SePay transaction ID
+    payment.paymentLinkId = body.transaction?.id || body.transaction?.transaction_id || body.id; 
     await payment.save();
 
     console.log(`Successfully upgraded user ${user.email} to ${payment.plan} via SePay.`);

@@ -9,7 +9,8 @@ import {
   Code2, 
   CreditCard, 
   LogOut,
-  Zap
+  Zap,
+  Flame
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -25,6 +26,7 @@ export default function Sidebar({ plan }: { plan: string }) {
   const menuItems = [
     { name: tNav('overview'), href: `/${locale}/dashboard`, icon: LayoutDashboard },
     { name: tNav('widgets'), href: `/${locale}/dashboard/widgets`, icon: Layers },
+    { name: tNav('flashSales'), href: `/${locale}/dashboard/campaigns`, icon: Flame },
     { name: tNav('embed'), href: `/${locale}/dashboard/embed`, icon: Code2 },
     { name: tNav('billing'), href: `/${locale}/dashboard/billing`, icon: CreditCard },
   ];

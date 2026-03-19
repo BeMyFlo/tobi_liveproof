@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
 import User from '@/models/User';
+import Campaign from '@/models/Campaign';
 
 export async function GET(req: NextRequest) {
   try {
@@ -23,7 +24,19 @@ export async function GET(req: NextRequest) {
       });
     }
 
-    const response = NextResponse.json({ widgets: enabledWidgets });
+    // 2. Fetch Active Campaigns
+    const now = new Date();
+    const activeCampaigns = await Campaign.find({
+        userId: user._id,
+        status: 'active',
+        startTime: { $lte: now },
+        endTime: { $gte: now }
+    });
+
+    const response = NextResponse.json({ 
+        widgets: enabledWidgets,
+        campaigns: activeCampaigns
+    });
     
     // Add CORS headers
     response.headers.set('Access-Control-Allow-Origin', '*');

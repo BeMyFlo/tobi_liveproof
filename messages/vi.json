@@ -1,0 +1,117 @@
+{
+  "hero": {
+    "title": "Tăng độ tin cậy và doanh số ngay lập tức",
+    "subtitle": "Hiển thị thông báo thời gian thực cho khách truy cập và biến họ thành khách hàng.",
+    "cta": "Bắt đầu miễn phí"
+  },
+  "common": {
+    "login": "Đăng nhập",
+    "register": "Đăng ký",
+    "logout": "Đăng xuất",
+    "dashboard": "Bảng điều khiển",
+    "home": "Trang chủ",
+    "pricing": "Bảng giá",
+    "features": "Tính năng",
+    "getStarted": "Bắt đầu ngay",
+    "loading": "Đang tải...",
+    "copy": "Sao chép",
+    "copied": "Đã sao chép!",
+    "save": "Lưu thay đổi",
+    "enabled": "Đang bật",
+    "disabled": "Đang tắt",
+    "upgrade": "Nâng cấp ngay",
+    "free": "Miễn phí",
+    "pro": "Pro",
+    "premium": "Premium"
+  },
+  "nav": {
+    "overview": "Tổng quan",
+    "widgets": "Widget của tôi",
+    "embed": "Mã nhúng",
+    "billing": "Gói cước",
+    "settings": "Cài đặt"
+  },
+  "dashboard": {
+    "welcome": "Chào mừng trở lại, {name}",
+    "apiKey": "Khóa API của bạn",
+    "stats": "Thống kê",
+    "views": "Tổng lượt xem",
+    "activeUsers": "Người xem thực tế",
+    "planInfo": "Gói hiện tại: {plan}"
+  },
+  "widgets": {
+    "title": "Cấu hình Widget",
+    "subtitle": "Cấu hình và quản lý các widget của bạn một cách độc lập.",
+    "viewers": {
+      "title": "Người xem trực tiếp",
+      "desc": "Hiển thị số người đang xem trang hiện tại."
+    },
+    "purchases": {
+      "title": "Mua hàng gần đây",
+      "desc": "Hiển thị các giao dịch mới nhất để tạo sự tin tưởng."
+    },
+    "exitIntent": {
+      "title": "Ưu đãi thoát trang",
+      "desc": "Tặng mã giảm giá khi khách hàng có ý định rời khỏi trang web."
+    },
+    "retention": {
+      "title": "Ưu đãi giữ chân",
+      "desc": "Tặng quà khi khách hàng xem sản phẩm lâu để thúc đẩy chốt đơn."
+    },
+    "scarcity": {
+      "title": "Thông báo khan hiếm",
+      "desc": "Hiển thị số lượng kho sắp hết"
+    },
+    "loyalty": {
+      "title": "Chào mừng khách quay lại",
+      "desc": "Lời chào cá nhân hóa cho khách hàng cũ (> 30 ngày)"
+    },
+    "settings": {
+      "position": "Vị trí hiển thị",
+      "style": "Giao diện",
+      "inline": "Hiển thị tại chỗ (Inline)",
+      "top-left": "Góc trên bên trái",
+      "top-right": "Góc trên bên phải",
+      "bottom-left": "Góc dưới bên trái",
+      "bottom-right": "Góc dưới bên phải",
+      "template": "Mẫu nội dung",
+      "delay": "Độ trễ (ms)",
+      "autoHide": "Tự ẩn sau (ms)",
+      "discount": "Hệ thống giảm giá",
+      "mode": "Chế độ",
+      "code": "Mã giảm giá",
+      "url": "URL chuyển hướng",
+      "api_url": "API Endpoint",
+      "api_body": "Nội dung Request (JSON)",
+      "api_headers": "Headers (JSON)",
+      "templateLong": "Nội dung chào mừng (Lâu ngày quay lại)",
+      "targetUrls": "Chỉ hiển thị trên các URL này",
+      "targetUrlsPlaceholder": "https://website.com/san-pham-1\nhttps://website.com/san-pham-2\n(Để trống để áp dụng cho tất cả các trang)",
+      "inventory": "Quản lý tồn kho ảo",
+      "inventoryPlaceholder": "ds423 : 2\nds224 : 1\n(Mỗi dòng 1 sản phẩm, hệ thống tự khớp theo URL)",
+      "targetSelector": "Vị trí gắn (CSS Selector)",
+      "targetSelectorPlaceholder": ".product-price hoặc #product-detail (Chỉ dùng cho chế độ Inline)"
+    }
+  },
+  "billing": {
+    "title": "Gói dịch vụ",
+    "subtitle": "Chọn gói phù hợp nhất với quy mô của bạn.",
+    "current": "Đây là gói bạn đang dùng",
+    "features": {
+      "widgets": "{count} Widget hoạt động",
+      "unlimited": "Không giới hạn Widget",
+      "customStyle": "Tùy chỉnh CSS & Giao diện",
+      "analytics": "Báo cáo chuyên sâu"
+    }
+  },
+  "embed": {
+    "title": "Cài đặt mã nhúng",
+    "subtitle": "Chọn phương thức cài đặt widget lên website của bạn.",
+    "method": "Phương thức",
+    "instruction": "Sao chép và dán đoạn mã này vào trước thẻ </body> của trang web.",
+    "events": {
+      "title": "Theo dõi đơn hàng",
+      "subtitle": "Gửi dữ liệu đơn hàng thực tế từ hệ thống của bạn tới LiveProof."
+    }
+  }
+}

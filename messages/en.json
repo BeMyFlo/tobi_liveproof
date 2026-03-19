@@ -1,0 +1,118 @@
+{
+  "hero": {
+    "title": "Build Trust & Boost Sales instantly",
+    "subtitle": "Show real-time notifications to your visitors and turn them into customers.",
+    "cta": "Start for free"
+  },
+  "common": {
+    "login": "Login",
+    "register": "Register",
+    "logout": "Logout",
+    "dashboard": "Dashboard",
+    "home": "Home",
+    "pricing": "Pricing",
+    "features": "Features",
+    "getStarted": "Get Started",
+    "loading": "Loading...",
+    "copy": "Copy",
+    "copied": "Copied!",
+    "save": "Save Changes",
+    "enabled": "Enabled",
+    "disabled": "Disabled",
+    "upgrade": "Upgrade Now",
+    "free": "Free",
+    "pro": "Pro",
+    "premium": "Premium"
+  },
+  "nav": {
+    "overview": "Overview",
+    "widgets": "My Widgets",
+    "embed": "Embed Code",
+    "billing": "Plan & Billing",
+    "settings": "Settings"
+  },
+  "dashboard": {
+    "welcome": "Welcome back, {name}",
+    "apiKey": "Your API Key",
+    "stats": "Usage Statistics",
+    "views": "Total Impressions",
+    "activeUsers": "Real-time Visitors",
+    "planInfo": "Current Plan: {plan}"
+  },
+  "widgets": {
+    "title": "Widget Configuration",
+    "subtitle": "Configure and manage your social proof widgets independently.",
+    "viewers": {
+      "title": "Live Viewers",
+      "desc": "Show how many people are browsing the current page."
+    },
+    "purchases": {
+      "title": "Recent Purchases",
+      "desc": "Show recent transactions to build trust."
+    },
+    "exitIntent": {
+      "title": "Exit Intent Offer",
+      "desc": "Gift customers a discount when they are about to leave."
+    },
+    "retention": {
+      "title": "Retention Offer",
+      "desc": "Reward customers who spend a lot of time viewing products."
+    },
+    "scarcity": {
+      "title": "Stock Scarcity",
+      "desc": "Show low stock alerts to create urgency"
+    },
+    "loyalty": {
+      "title": "Welcome Back Guest",
+      "desc": "Personalized greeting for returning customers (> 30 days)"
+    },
+    "settings": {
+      "position": "Display Position",
+      "style": "Appearance Mode",
+      "inline": "Inline (at div target)",
+      "top-left": "Top Left (Floating)",
+      "top-right": "Top Right (Floating)",
+      "bottom-left": "Bottom Left (Floating)",
+      "bottom-right": "Bottom Right (Floating)",
+      "template": "Notification Template",
+      "templateLong": "Long Absence Welcome Template",
+      "delay": "Popup Delay (ms)",
+      "autoHide": "Auto Hide After (ms)",
+      "discount": "Discount System",
+      "mode": "Mode",
+      "code": "Discount Code",
+      "url": "Redirect URL",
+      "api_url": "API Endpoint",
+      "api_body": "Request Body (JSON)",
+      "api_headers": "Request Headers (JSON)",
+      "success": "Success Message",
+      "targetUrls": "Target URLs",
+      "targetUrlsPlaceholder": "https://website.com/product-1\nhttps://website.com/product-2\n(Leave empty to show on all pages)",
+      "inventory": "Virtual Inventory Management",
+      "inventoryPlaceholder": "ds423 : 2\nds224 : 1\n(One per line, matches based on URL slug)",
+      "targetSelector": "Mount Point (CSS Selector)",
+      "targetSelectorPlaceholder": ".product-price or #product-detail (Only for Inline mode)"
+    }
+  },
+  "billing": {
+    "title": "Subscription Plans",
+    "subtitle": "Choose the best plan for your business scale.",
+    "current": "This is your current plan",
+    "features": {
+      "widgets": "{count} Active Widget(s)",
+      "unlimited": "Unlimited Widgets",
+      "customStyle": "Custom CSS & Styles",
+      "analytics": "Advanced Analytics"
+    }
+  },
+  "embed": {
+    "title": "Installation",
+    "subtitle": "Pick your preferred method to embed the widgets.",
+    "method": "Select Method",
+    "instruction": "Copy and paste this code before the closing </body> tag.",
+    "events": {
+      "title": "Purchase Tracking",
+      "subtitle": "Send real-time purchase data from your backend to LiveProof."
+    }
+  }
+}

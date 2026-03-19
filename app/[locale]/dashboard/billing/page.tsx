@@ -5,6 +5,8 @@ import DashboardLayout from '@/components/dashboard/DashboardLayout';
 import { useTranslations } from 'next-intl';
 import { Check, Zap, Rocket, Crown } from 'lucide-react';
 
+export const dynamic = "force-dynamic";
+
 export default function BillingPage() {
   const [user, setUser] = useState<any>(null);
   const t = useTranslations('billing');

@@ -3,6 +3,8 @@ import dbConnect from '@/lib/db';
 import Event from '@/models/Event';
 import { verifyToken } from '@/lib/auth';
 
+export const dynamic = "force-dynamic";
+
 export async function GET(req: NextRequest) {
   try {
     const token = req.cookies.get('token')?.value;

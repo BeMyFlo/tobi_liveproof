@@ -36,7 +36,7 @@ export const config = {
   // - /api (API routes)
   // - /_next (Next.js internals)
   // - /_static (inside /public)
-  // - /live.js (public script)
-  // - /favicon.ico, /sitemap.xml (static files)
-  matcher: ['/((?!api|_next|_static|_vercel|live.js|favicon.ico|sitemap.xml).*)']
+  // - /.*\\..* (files with extension like logo.png, favicon.ico)
+  // - /_vercel (internals)
+  matcher: ['/((?!api|_next|_static|_vercel|[\\w-]+\\.\\w+).*)']
 };

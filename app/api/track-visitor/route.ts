@@ -5,7 +5,7 @@ import Visitor from '@/models/Visitor';
 
 export async function POST(req: NextRequest) {
   try {
-    const { key, visitorId, url } = await req.json();
+    const { key, visitorId, url, email } = await req.json();
 
     if (!key || !visitorId) {
       return NextResponse.json({ error: 'Missing information' }, { status: 400 });
@@ -19,7 +19,22 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Invalid API Key' }, { status: 404 });
     }
 
-    // 2. Track the visitor
+    // 2. Loyalty Logic (New)
+    let orderCount = 0;
+    let allMilestones = [];
+    //@ts-ignore
+    const LoyaltyMilestone = (await import('@/models/LoyaltyMilestone')).default;
+    //@ts-ignore
+    const Purchase = (await import('@/models/Purchase')).default;
+
+    allMilestones = await LoyaltyMilestone.find({ userId: user._id }).sort({ threshold: 1 });
+    console.log(`User ${user._id} has ${allMilestones.length} milestones.`);
+
+    if (email) {
+      orderCount = await Purchase.countDocuments({ userId: user._id, customerEmail: email });
+    }
+
+    // 3. Track the visitor
     let visitor = await Visitor.findOne({ visitorId, userId: user._id });
     let specialTrigger = null;
     let isReturning = false;
@@ -65,7 +80,9 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ 
       success: true, 
       specialTrigger,
-      isReturning
+      isReturning,
+      orderCount,
+      allMilestones
     }, {
       headers: {
         'Access-Control-Allow-Origin': '*',

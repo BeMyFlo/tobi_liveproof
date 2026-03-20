@@ -14,7 +14,7 @@ export async function GET(req: NextRequest) {
     const user = await User.findOne({ apiKey });
     if (!user) return NextResponse.json({ error: 'User not found' }, { status: 404 });
 
-    // Filter only enabled widgets
+    console.log('Tobi LiveProof Backend: Widgets in DB', user.widgets);
     const enabledWidgets: any = {};
     if (user.widgets) {
       Object.keys(user.widgets).forEach(key => {
@@ -23,6 +23,7 @@ export async function GET(req: NextRequest) {
         }
       });
     }
+    console.log('Tobi LiveProof Backend: Enabled Widgets', enabledWidgets);
 
     // 2. Fetch Active Campaigns
     const now = new Date();
@@ -35,7 +36,11 @@ export async function GET(req: NextRequest) {
 
     const response = NextResponse.json({ 
         widgets: enabledWidgets,
-        campaigns: activeCampaigns
+        campaigns: activeCampaigns,
+        seo: {
+          enabled: user.seoEnabled,
+          keywords: user.seoKeywords
+        }
     });
     
     // Add CORS headers

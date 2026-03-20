@@ -1,8 +1,11 @@
 {
   "hero": {
-    "title": "Build Trust & Boost Sales instantly",
-    "subtitle": "Show real-time notifications to your visitors and turn them into customers.",
-    "cta": "Start for free"
+    "title": "Boost Trust and Sales Instantly",
+    "subtitle": "Turn your website into a 24/7 dedicated salesperson",
+    "cta": "GET STARTED FOR FREE",
+    "demo": "Watch Live Demo",
+    "badge": "Social Proof as a Service",
+    "preview": "CLICK TO PREVIEW DASHBOARD"
   },
   "common": {
     "login": "Login",
@@ -30,15 +33,24 @@
     "flashSales": "Flash Sales",
     "embed": "Embed Code",
     "billing": "Plan & Billing",
+    "seo": "Boost SEO 🚀",
     "settings": "Settings"
   },
   "dashboard": {
     "welcome": "Welcome back, {name}",
     "apiKey": "Your API Key",
     "stats": "Usage Statistics",
+    "monitoring": "Real-time monitoring and performance tracking.",
     "views": "Total Impressions",
     "activeUsers": "Real-time Visitors",
-    "planInfo": "Current Plan: {plan}"
+    "planInfo": "Current Plan: {plan}",
+    "activePlan": "Active Plan",
+    "proPerks": "Pro Perks Enabled",
+    "nextBilling": "Next billing: {date}",
+    "totalClicks": "Total Clicks",
+    "conversion": "Conversion Rate",
+    "activityRecap": "Activity Over Time",
+    "last7Days": "Last 7 Days"
   },
   "widgets": {
     "title": "Widget Configuration",
@@ -68,6 +80,7 @@
       "desc": "Personalized greeting for returning customers (> 30 days)"
     },
     "settings": {
+      "title": "Settings",
       "position": "Display Position",
       "style": "Appearance Mode",
       "inline": "Inline (at div target)",
@@ -90,20 +103,46 @@
       "targetUrls": "Target URLs",
       "targetUrlsPlaceholder": "https://website.com/product-1\nhttps://website.com/product-2\n(Leave empty to show on all pages)",
       "inventory": "Virtual Inventory Management",
-      "inventoryPlaceholder": "ds423 : 2\nds224 : 1\n(One per line, matches based on URL slug)",
-      "targetSelector": "Mount Point (CSS Selector)",
-      "targetSelectorPlaceholder": ".product-price or #product-detail (Only for Inline mode)"
+      "inventoryPlaceholder": "ds423 : 2\nds224 : 1\n(One item per line, system matches by URL)",
+      "targetSelector": "Anchor (CSS Selector)",
+      "targetSelectorPlaceholder": ".product-price or #product-detail (Inline mode only)",
+      "dark": "Slate Dark",
+      "light": "Snow Light",
+      "enabledLabel": "ENABLED",
+      "disabledLabel": "DISABLED",
+      "modeCode": "Show Code",
+      "modeRedirect": "Redirect URL",
+      "modeApi": "Call API",
+      "successPlaceholder": "Applied successfully!",
+      "advancedTriggers": "Advanced Triggers",
+      "autoCopy": "Auto Copy",
+      "autoRedirect": "Auto Redirect",
+      "saveSuccess": "Settings saved successfully!",
+      "saveError": "Failed to save settings"
     }
   },
   "billing": {
     "title": "Subscription Plans",
-    "subtitle": "Choose the best plan for your business scale.",
-    "current": "This is your current plan",
+    "subtitle": "Choose the pricing plan that best fits your needs.",
+    "current": "Current Plan",
+    "mostPopular": "Most Popular",
+    "perMonth": "mo",
+    "upgradeTo": "Upgrade to {name}",
+    "enterprise": {
+        "title": "Need a Custom Enterprise Plan?",
+        "desc": "Large scale business with 1M+ monthly views? Let's talk.",
+        "cta": "Contact Sales"
+    },
     "features": {
-      "widgets": "{count} Active Widget(s)",
-      "unlimited": "Unlimited Widgets",
-      "customStyle": "Custom CSS & Styles",
-      "analytics": "Advanced Analytics"
+        "widgets": "{count} active widgets",
+        "unlimited": "Unlimited widgets",
+        "customStyle": "Custom CSS & styles",
+        "analytics": "Advanced analytics",
+        "impressions": "{count} impressions/mo",
+        "impressionsUnlimited": "Unlimited impressions",
+        "supportCommunity": "Community Support",
+        "supportEmail": "Email Support",
+        "supportPriority": "Priority 24/7 Support"
     }
   },
   "embed": {
@@ -111,9 +150,120 @@
     "subtitle": "Pick your preferred method to embed the widgets.",
     "method": "Select Method",
     "instruction": "Copy and paste this code before the closing </body> tag.",
+    "masterScript": "Master Script",
+    "getStarted": "Get Started",
+    "howItWorks": "How it works",
+    "benefits": [
+      "One script for all widgets",
+      "Config everything from dashboard",
+      "No code changes needed after install"
+    ],
+    "platforms": "Platform Integration",
+    "guide": "{name} Guide",
+    "wpShortcode": "WP Shortcode",
+    "wpInstruction": "Install our plugin or paste the script manually.",
     "events": {
-      "title": "Purchase Tracking",
-      "subtitle": "Send real-time purchase data from your backend to LiveProof."
+      "title": "Order Tracking (API)",
+      "subtitle": "Send actual order data from your system to LiveProof.",
+      "info": "Send order data as soon as payment is completed. Orders will be displayed on your widgets."
+    },
+    "guides": {
+      "wordpress": {
+        "title": "WordPress Installation",
+        "steps": [
+          "Open your WordPress admin dashboard.",
+          "Install 'Insert Headers and Footers' or a similar plugin.",
+          "Paste the Master Script into the 'Scripts in Footer' section.",
+          "If using Elementor/Gutenberg, use an 'HTML' widget at the bottom."
+        ]
+      },
+      "html": {
+        "title": "Manual / Custom Site",
+        "steps": [
+          "Open your main layout or footer file (e.g. footer.html, layout.php).",
+          "Paste the script just before the closing </body> tag.",
+          "Save and refresh your site to verify."
+        ]
+      },
+      "shopify": {
+        "title": "Shopify Installation",
+        "steps": [
+          "Go to Online Store > Themes > Edit Code.",
+          "Locate 'theme.liquid' in the layouts folder.",
+          "Paste the script before the closing </body> tag.",
+          "Save changes."
+        ]
+      }
     }
+  },
+  "landing": {
+    "demoTitle": "Demo Running",
+    "demoDesc": "Feel the power of Social Proof!",
+    "demoInfo": "You'll see real-time notifications popping up on your screen, exactly as your customers will.",
+    "featuresTitle": "Available Widgets",
+    "featuresSubtitle": "Elegant design, effortless integration",
+    "pricingTitle": "Simple Pricing",
+    "pricingSubtitle": "Choose the perfect plan to grow your business",
+    "growthChart": "Online Revenue Growth Chart",
+    "close": "Close",
+    "privacy": "Privacy",
+    "terms": "Terms",
+    "rights": "All rights reserved."
+  },
+  "auth": {
+    "loginTitle": "Welcome Back",
+    "registerTitle": "Create Account",
+    "emailLabel": "Email Address",
+    "passwordLabel": "Password",
+    "emailPlaceholder": "name@company.com",
+    "loginBtn": "Login",
+    "registerBtn": "Register",
+    "noAccount": "Don't have an account?",
+    "hasAccount": "Already have an account?",
+    "signUp": "Sign up",
+    "signIn": "Sign in",
+    "pleaseWait": "Please wait...",
+    "errorConnection": "Connection error",
+    "errorGeneric": "Something went wrong"
+  },
+  "campaigns": {
+    "title": "Flash Sales 🔥",
+    "subtitle": "Create urgent offers to drive immediate sales and engagement.",
+    "createBtn": "Create Campaign",
+    "noCampaigns": "No campaigns yet",
+    "noCampaignsDesc": "Start by creating your first Flash Sale campaign to boost revenue.",
+    "statusActive": "Activate",
+    "statusPause": "Pause",
+    "modalTitle": "🔥 Configure Flash Sale",
+    "nameLabel": "Campaign Name",
+    "namePlaceholder": "e.g. Summer Clearance",
+    "startLabel": "Start Time",
+    "endLabel": "End Time",
+    "productList": "Product List",
+    "addProduct": "+ Add Product",
+    "productName": "Product Name",
+    "productUrl": "Product URL",
+    "productImage": "Image URL",
+    "originalPriceLabel": "Original Price",
+    "salePriceLabel": "Sale Price",
+    "discountCodeLabel": "Discount Code",
+    "globalToggle": "🌍 Display Sitewide",
+    "globalDesc": "Enable to show flash sale on all pages.",
+    "targetUrlsLabel": "Specific URLs only (One per line)",
+    "cancel": "Cancel",
+    "save": "Save Campaign",
+    "deleteConfirm": "Are you sure you want to delete this campaign?",
+    "productCount": "{count} products"
+  },
+  "seo": {
+    "title": "Keyword SEO Optimization",
+    "subtitle": "Leverage social proof to boost your keyword rankings on Google.",
+    "enabledLabel": "Enable AI SEO Optimization",
+    "keywordsLabel": "Target SEO Keywords (Comma separated)",
+    "keywordsPlaceholder": "e.g. running shoes, gym accessories, iphone 15 pro max...",
+    "saveSuccess": "SEO settings updated!",
+    "saveError": "Failed to update SEO settings",
+    "tipTitle": "Why this works?",
+    "tipDesc": "The system silently optimizes your site for Google by injecting JSON-LD Schema fragments containing your target keywords. This helps Googlebot understand your page's context without affecting the user interface or distracting your customers."
   }
 }

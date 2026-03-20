@@ -15,6 +15,26 @@ export async function GET(req: NextRequest) {
     const user = await User.findById(decoded.userId).select('-password');
     if (!user) return NextResponse.json({ error: 'User not found' }, { status: 404 });
 
+    // Migration for new widget types
+    let needsSave = false;
+    if (!user.widgets) {
+        user.widgets = {};
+        needsSave = true;
+    }
+    if (!user.widgets.welcome) {
+        user.widgets.welcome = { enabled: false, template: 'Chào mừng bạn quay lại! Rất vui được gặp lại bạn.', delay: 2000, hideAfter: 8000 };
+        needsSave = true;
+    }
+    if (!user.widgets.loyalty) {
+        user.widgets.loyalty = { enabled: false, template: 'Chương trình Loyalty' };
+        needsSave = true;
+    }
+
+    if (needsSave) {
+        user.markModified('widgets');
+        await user.save();
+    }
+
     return NextResponse.json({ user });
   } catch (error) {
     return NextResponse.json({ error: 'Server error' }, { status: 500 });

@@ -5,7 +5,7 @@ import Purchase from '@/models/Purchase';
 
 export async function POST(req: NextRequest) {
   try {
-    const { apiKey, product, location, customerName } = await req.json();
+    const { apiKey, product, location, customerName, customerEmail } = await req.json();
 
     if (!apiKey || !product) {
       return NextResponse.json({ error: 'Missing data' }, { status: 400 });
@@ -21,7 +21,8 @@ export async function POST(req: NextRequest) {
       apiKey,
       productName: product,
       customerLocation: location || 'Someone',
-      customerName: customerName || 'Someone'
+      customerName: customerName || 'Someone',
+      customerEmail: customerEmail
     });
     
     console.log(`Real purchase recorded for ${user.email}: ${product}`);

@@ -2,8 +2,10 @@
 
 import { useState } from 'react';
 import { useRouter, useParams } from 'next/navigation';
+import { useTranslations } from 'next-intl';
 
 export default function AuthForm({ mode }: { mode: 'login' | 'register' }) {
+  const t = useTranslations('auth');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -16,7 +18,7 @@ export default function AuthForm({ mode }: { mode: 'login' | 'register' }) {
     e.preventDefault();
     setError('');
     setLoading(true);
-
+    
     try {
       const res = await fetch(`/api/auth/${mode}`, {
         method: 'POST',
@@ -26,48 +28,48 @@ export default function AuthForm({ mode }: { mode: 'login' | 'register' }) {
 
       const data = await res.json();
       if (!res.ok) {
-        setError(data.error || 'Something went wrong');
+        setError(data.error || t('errorGeneric'));
       } else {
         router.push(`/${locale}/dashboard`);
         router.refresh();
       }
     } catch (err) {
-      setError('Connection error');
+      setError(t('errorConnection'));
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="w-full max-w-md mx-auto p-8 glass rounded-3xl border border-white/10 shadow-2xl">
-      <h2 className="text-3xl font-bold mb-6 text-center">
-        {mode === 'login' ? 'Welcome Back' : 'Create Account'}
+    <div className="w-full max-w-sm sm:max-w-md mx-auto p-6 md:p-8 lg:p-10 bg-slate-900/40 backdrop-blur-xl rounded-[2rem] border border-white/10 shadow-2xl animate-in fade-in slide-in-from-bottom-4 duration-700">
+      <h2 className="text-2xl md:text-3xl font-black mb-6 md:mb-8 text-center italic uppercase tracking-tight">
+        {mode === 'login' ? t('loginTitle') : t('registerTitle')}
       </h2>
       
       {error && (
-        <div className="bg-red-500/20 border border-red-500/50 text-red-200 p-3 rounded-lg mb-4 text-sm">
+        <div className="bg-red-500/10 border border-red-500/20 text-red-300 p-3 md:p-4 rounded-xl mb-6 text-[13px] md:text-sm text-center font-medium animate-in shake-in duration-300">
           {error}
         </div>
       )}
 
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <div>
-          <label className="block text-sm font-medium mb-1 text-gray-400">Email Address</label>
+      <form onSubmit={handleSubmit} className="space-y-5 md:space-y-6">
+        <div className="space-y-2">
+          <label className="block text-[13px] md:text-sm font-black text-gray-400 uppercase tracking-widest pl-1">{t('emailLabel')}</label>
           <input
             type="email"
             required
-            className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
-            placeholder="name@company.com"
+            className="w-full h-12 md:h-14 bg-white/5 border border-white/10 rounded-xl md:rounded-2xl px-5 text-[14px] md:text-[15px] focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500/50 transition-all font-bold placeholder:text-gray-600"
+            placeholder={t('emailPlaceholder')}
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
         </div>
-        <div>
-          <label className="block text-sm font-medium mb-1 text-gray-400">Password</label>
+        <div className="space-y-2">
+          <label className="block text-[13px] md:text-sm font-black text-gray-400 uppercase tracking-widest pl-1">{t('passwordLabel')}</label>
           <input
             type="password"
             required
-            className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+            className="w-full h-12 md:h-14 bg-white/5 border border-white/10 rounded-xl md:rounded-2xl px-5 text-[14px] md:text-[15px] focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500/50 transition-all font-bold placeholder:text-gray-600"
             placeholder="••••••••"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -76,19 +78,19 @@ export default function AuthForm({ mode }: { mode: 'login' | 'register' }) {
         <button
           type="submit"
           disabled={loading}
-          className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-blue-800 text-white font-bold py-3 rounded-xl transition-all shadow-lg shadow-blue-500/20 mt-2"
+          className="w-full h-12 md:h-14 bg-blue-600 hover:bg-blue-700 disabled:bg-blue-800 text-white font-[950] rounded-xl md:rounded-2xl transition-all shadow-xl shadow-blue-500/20 mt-4 uppercase tracking-widest text-[11px] md:text-xs italic"
         >
-          {loading ? 'Please wait...' : mode === 'login' ? 'Login' : 'Register'}
+          {loading ? t('pleaseWait') : mode === 'login' ? t('loginBtn') : t('registerBtn')}
         </button>
       </form>
       
-      <p className="mt-6 text-center text-gray-400 text-sm">
-        {mode === 'login' ? "Don't have an account?" : "Already have an account?"}
+      <p className="mt-8 text-center text-gray-400 text-[13px] md:text-sm font-semibold italic">
+        {mode === 'login' ? t('noAccount') : t('hasAccount')}
         <button 
           onClick={() => router.push(`/${locale}/${mode === 'login' ? 'register' : 'login'}`)}
-          className="ml-1 text-blue-400 hover:underline font-medium"
+          className="ml-2 text-blue-400 hover:text-white transition-colors font-black uppercase tracking-tight"
         >
-          {mode === 'login' ? 'Sign up' : 'Sign in'}
+          {mode === 'login' ? t('signUp') : t('signIn')}
         </button>
       </p>
     </div>

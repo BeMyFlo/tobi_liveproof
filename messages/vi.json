@@ -1,8 +1,11 @@
 {
   "hero": {
     "title": "Tăng độ tin cậy và doanh số ngay lập tức",
-    "subtitle": "Hiển thị thông báo thời gian thực cho khách truy cập và biến họ thành khách hàng.",
-    "cta": "Bắt đầu miễn phí"
+    "subtitle": "Biến website của bạn thành một người bán hàng tận tâm",
+    "cta": "BẮT ĐẦU MIỄN PHÍ",
+    "demo": "Xem Demo Ngay",
+    "badge": "Social Proof as a Service",
+    "preview": "BẤM XEM TRƯỚC HỆ THỐNG"
   },
   "common": {
     "login": "Đăng nhập",
@@ -30,6 +33,8 @@
     "flashSales": "Flash Sales 🔥",
     "embed": "Mã nhúng",
     "billing": "Gói cước",
+    "seo": "Tăng hạng SEO 🚀",
+    "loyalty": "Loyalty 💎",
     "settings": "Cài đặt"
   },
   "dashboard": {
@@ -38,7 +43,15 @@
     "stats": "Thống kê",
     "views": "Tổng lượt xem",
     "activeUsers": "Người xem thực tế",
-    "planInfo": "Gói hiện tại: {plan}"
+    "planInfo": "Gói hiện tại: {plan}",
+    "monitoring": "Theo dõi hiệu suất Social Proof của bạn.",
+    "activePlan": "Gói đang dùng",
+    "proPerks": "Đặc quyền Pro",
+    "nextBilling": "Thanh toán tiếp theo: {date}",
+    "totalClicks": "Tổng lượt nhấp",
+    "conversion": "Tỉ lệ chuyển đổi",
+    "activityRecap": "Tổng quan hoạt động",
+    "last7Days": "7 ngày qua"
   },
   "widgets": {
     "title": "Cấu hình Widget",
@@ -63,11 +76,16 @@
       "title": "Thông báo khan hiếm",
       "desc": "Hiển thị số lượng kho sắp hết"
     },
-    "loyalty": {
+    "welcome": {
       "title": "Chào mừng khách quay lại",
       "desc": "Lời chào cá nhân hóa cho khách hàng cũ (> 30 ngày)"
     },
+    "loyalty": {
+      "title": "Chương trình Loyalty (Cột mốc)",
+      "desc": "Hiển thị tiến trình nhận quà dựa trên số lượng đơn hàng"
+    },
     "settings": {
+      "title": "Cài đặt",
       "position": "Vị trí hiển thị",
       "style": "Giao diện",
       "inline": "Hiển thị tại chỗ (Inline)",
@@ -91,18 +109,45 @@
       "inventory": "Quản lý tồn kho ảo",
       "inventoryPlaceholder": "ds423 : 2\nds224 : 1\n(Mỗi dòng 1 sản phẩm, hệ thống tự khớp theo URL)",
       "targetSelector": "Vị trí gắn (CSS Selector)",
-      "targetSelectorPlaceholder": ".product-price hoặc #product-detail (Chỉ dùng cho chế độ Inline)"
+      "targetSelectorPlaceholder": ".product-price hoặc #product-detail (Chỉ dùng cho chế độ Inline)",
+      "dark": "Tối (Slate Dark)",
+      "light": "Sáng (Snow Light)",
+      "enabledLabel": "ĐANG BẬT",
+      "disabledLabel": "ĐANG TẮT",
+      "modeCode": "Hiển thị mã",
+      "modeRedirect": "Chuyển hướng URL",
+      "modeApi": "Gọi API",
+      "success": "Thông báo thành công",
+      "successPlaceholder": "Đã áp dụng thành công!",
+      "advancedTriggers": "Kích hoạt nâng cao",
+      "autoCopy": "Tự động sao chép",
+      "autoRedirect": "Tự động chuyển hướng",
+      "saveSuccess": "Lưu cài đặt thành công!",
+      "saveError": "Lưu cài đặt thất bại"
     }
   },
   "billing": {
     "title": "Gói dịch vụ",
     "subtitle": "Chọn gói phù hợp nhất với quy mô của bạn.",
     "current": "Đây là gói bạn đang dùng",
+    "mostPopular": "Phổ biến nhất",
+    "perMonth": "tháng",
+    "upgradeTo": "Nâng cấp {name}",
+    "enterprise": {
+      "title": "Bạn cần gói Enterprise tùy chỉnh?",
+      "desc": "Dành cho doanh nghiệp lớn với hơn 1 triệu lượt hiển thị/tháng? Hãy trò chuyện cùng chúng tôi.",
+      "cta": "Liên hệ ngay"
+    },
     "features": {
       "widgets": "{count} Widget hoạt động",
       "unlimited": "Không giới hạn Widget",
       "customStyle": "Tùy chỉnh CSS & Giao diện",
-      "analytics": "Báo cáo chuyên sâu"
+      "analytics": "Báo cáo chuyên sâu",
+      "impressions": "{count} lượt hiển thị/tháng",
+      "impressionsUnlimited": "Không giới hạn lượt hiển thị",
+      "supportCommunity": "Hỗ trợ cộng đồng",
+      "supportEmail": "Hỗ trợ qua Email",
+      "supportPriority": "Hỗ trợ ưu tiên 24/7"
     }
   },
   "embed": {
@@ -110,9 +155,119 @@
     "subtitle": "Chọn phương thức cài đặt widget lên website của bạn.",
     "method": "Phương thức",
     "instruction": "Sao chép và dán đoạn mã này vào trước thẻ </body> của trang web.",
+    "masterScript": "Mã nhúng tổng",
+    "howItWorks": "Cách thức hoạt động",
+    "benefits": [
+      "Một mã cho tất cả các tiện ích",
+      "Cấu hình mọi thứ từ Dashboard",
+      "Không cần thay đổi mã sau khi cài"
+    ],
+    "platforms": "Tích hợp nền tảng",
+    "guide": "Hướng dẫn {name}",
+    "wpShortcode": "WP Shortcode",
+    "wpInstruction": "Cài plugin TP LiveProof hoặc dán mã thủ công.",
     "events": {
-      "title": "Theo dõi đơn hàng",
-      "subtitle": "Gửi dữ liệu đơn hàng thực tế từ hệ thống của bạn tới LiveProof."
+      "title": "Theo dõi đơn hàng (API)",
+      "subtitle": "Gửi dữ liệu đơn hàng thực tế từ hệ thống của bạn tới LiveProof.",
+      "info": "Gửi dữ liệu đơn hàng ngay khi khách thanh toán xong. Đơn hàng sẽ được hiển thị trên các tiện ích của bạn."
+    },
+    "guides": {
+      "wordpress": {
+        "title": "Cài đặt cho WordPress",
+        "steps": [
+          "Mở trang quản trị WordPress của bạn.",
+          "Cài đặt plugin 'Insert Headers and Footers' hoặc plugin tương tự.",
+          "Dán Mã nhúng tổng vào phần 'Scripts in Footer'.",
+          "Nếu bạn dùng Elementor/Gutenberg, bạn có thể dùng widget 'HTML' và dán mã vào cuối trang."
+        ]
+      },
+      "html": {
+        "title": "Cài đặt cho Web tự code (HTML)",
+        "steps": [
+          "Mở file giao diện chung (thường là footer.html hoặc layout.php).",
+          "Dán mã nhúng vào ngay trước thẻ đóng </body>.",
+          "Lưu lại và tải lại trang web để kiểm tra."
+        ]
+      },
+      "shopify": {
+        "title": "Cài đặt cho Shopify",
+        "steps": [
+          "Vào Online Store > Themes > Edit Code.",
+          "Tìm file 'theme.liquid'.",
+          "Dán mã nhúng vào ngay trước thẻ đóng </body>.",
+          "Nhấn Save để hoàn tất."
+        ]
+      }
     }
+  },
+  "landing": {
+    "demoTitle": "Demo Đang Chạy",
+    "demoDesc": "Cảm nhận sức mạnh của Social Proof!",
+    "demoInfo": "Bạn sẽ thấy những thông báo thời gian thực hiện lên trên màn hình, y hệt như khách hàng của bạn sẽ thấy.",
+    "featuresTitle": "Các Loại Widget Có Sẵn",
+    "featuresSubtitle": "Thiết kế tinh tế, tích hợp dễ dàng",
+    "pricingTitle": "Bảng Giá Dịch Vụ",
+    "pricingSubtitle": "Chọn gói phù hợp để bắt đầu ngay hôm nay",
+    "growthChart": "Biểu đồ tăng trưởng doanh thu trực tuyến",
+    "close": "Đóng",
+    "privacy": "Quyền riêng tư",
+    "terms": "Điều khoản",
+    "rights": "Bảo lưu mọi quyền."
+  },
+  "auth": {
+    "loginTitle": "Chào mừng trở lại",
+    "registerTitle": "Tạo tài khoản mới",
+    "emailLabel": "Địa chỉ Email",
+    "passwordLabel": "Mật khẩu",
+    "emailPlaceholder": "ten@congty.com",
+    "loginBtn": "Đăng nhập",
+    "registerBtn": "Đăng ký",
+    "noAccount": "Chưa có tài khoản?",
+    "hasAccount": "Đã có tài khoản?",
+    "signUp": "Tham gia ngay",
+    "signIn": "Đăng nhập ngay",
+    "pleaseWait": "Vui lòng đợi...",
+    "errorConnection": "Lỗi kết nối máy chủ",
+    "errorGeneric": "Đã có lỗi xảy ra"
+  },
+  "campaigns": {
+    "title": "Flash Sales 🔥",
+    "subtitle": "Tạo các chương trình ưu đãi khẩn cấp để thôi thúc khách mua hàng.",
+    "createBtn": "Tạo Chiến Dịch",
+    "noCampaigns": "Chưa có chiến dịch nào",
+    "noCampaignsDesc": "Bắt đầu tạo chiến dịch Flash Sale đầu tiên để tăng doanh số ngay hôm nay.",
+    "statusActive": "Kích Hoạt",
+    "statusPause": "Tạm Dừng",
+    "modalTitle": "🔥 Cấu hình Flash Sale",
+    "nameLabel": "Tên Chiến Dịch",
+    "namePlaceholder": "Ví dụ: Xả kho mùa hè",
+    "startLabel": "Bắt Đầu",
+    "endLabel": "Kết Thúc",
+    "productList": "Danh sách sản phẩm",
+    "addProduct": "+ Thêm sản phẩm",
+    "productName": "Tên sản phẩm",
+    "productUrl": "Link sản phẩm (URL)",
+    "productImage": "Link ảnh sản phẩm (URL)",
+    "originalPriceLabel": "Giá gốc",
+    "salePriceLabel": "Giá giảm",
+    "discountCodeLabel": "Mã giảm giá",
+    "globalToggle": "🌍 Hiển thị toàn trang web",
+    "globalDesc": "Bật để hiện Flash Sale ở tất cả các trang.",
+    "targetUrlsLabel": "Chỉ hiện ở các Link này (Mỗi dòng 1 link)",
+    "cancel": "Hủy",
+    "save": "Lưu Chiến Dịch",
+    "deleteConfirm": "Xác nhận xóa chiến dịch này?",
+    "productCount": "{count} sản phẩm"
+  },
+  "seo": {
+    "title": "Tối ưu hóa SEO từ khóa",
+    "subtitle": "Sử dụng sức mạnh của Social Proof để đẩy thứ hạng từ khóa của bạn trên Google.",
+    "enabledLabel": "Kích hoạt tối ưu hóa thông minh",
+    "keywordsLabel": "Từ khóa SEO mục tiêu (Cách nhau bằng dấu phẩy)",
+    "keywordsPlaceholder": "Ví dụ: giày chạy bộ chính hãng, phụ kiện gym giá rẻ, iphone 15 pro max...",
+    "saveSuccess": "Đã cập nhật cài đặt SEO!",
+    "saveError": "Lỗi khi lưu cài đặt SEO",
+    "tipTitle": "Tại sao tính năng này hiệu quả?",
+    "tipDesc": "Hệ thống sẽ âm thầm tối ưu hóa website của bạn cho Google bằng cách tiêm (inject) các đoạn mã JSON-LD Schema chứa từ khóa mục tiêu. Điều này giúp Googlebot hiểu rõ chủ đề trang web mà không làm thay đổi giao diện hay gây phiền toái cho khách hàng của bạn."
   }
 }

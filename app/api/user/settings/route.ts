@@ -11,18 +11,20 @@ export async function POST(req: NextRequest) {
     const decoded = verifyToken(token);
     if (!decoded) return NextResponse.json({ error: 'Invalid token' }, { status: 401 });
 
-    const { widgets } = await req.json();
+    const { widgets, seoEnabled, seoKeywords } = await req.json();
 
     await dbConnect();
     
     const user = await User.findById(decoded.userId);
     if (!user) return NextResponse.json({ error: 'User not found' }, { status: 404 });
 
-    // Force set the entire widgets object to avoid merging issues with old fields
-    user.set({ widgets });
-    
-    // Mark specifically as modified to bypass Mongoose's internal diffing
-    user.markModified('widgets');
+    if (widgets) {
+      user.widgets = widgets;
+      user.markModified('widgets');
+    }
+
+    if (seoEnabled !== undefined) user.seoEnabled = seoEnabled;
+    if (seoKeywords !== undefined) user.seoKeywords = seoKeywords;
     
     const savedUser = await user.save();
     

@@ -23,6 +23,10 @@ const PurchaseSchema = new mongoose.Schema({
     type: String,
     default: 'Earth',
   },
+  customerEmail: {
+    type: String,
+    index: true,
+  },
   createdAt: {
     type: Date,
     default: Date.now,

@@ -21,9 +21,10 @@ const widgetSettingsSchema = new mongoose.Schema({
   autoRedirect: { type: Boolean, default: false },
   redirectDelay: { type: Number, default: 5 },
   successMessage: { type: String, default: 'Success!' },
-  targetUrls: { type: String, default: '' },
-  inventory: { type: String, default: '' },
+  targetUrls: { type: [String], default: [] },
+  inventory: { type: [String], default: [] },
   targetSelector: { type: String, default: '' },
+  templateLong: { type: String, default: '' },
 }, { _id: false });
 
 const userSchema = new mongoose.Schema({
@@ -38,8 +39,11 @@ const userSchema = new mongoose.Schema({
     exitIntent: { type: widgetSettingsSchema, default: () => ({ enabled: false, template: 'Don\'t leave! Here is a gift: {code}', discountEnabled: true }) },
     retention: { type: widgetSettingsSchema, default: () => ({ enabled: false, template: 'Thanks for staying! Use this code to checkout: {code}', discountEnabled: true }) },
     scarcity: { type: widgetSettingsSchema, default: () => ({ enabled: false, template: '🔥 Only {count} items left in stock!' }) },
-    loyalty: { type: widgetSettingsSchema, default: () => ({ enabled: false, template: 'Chào mừng bạn quay lại! Rất vui được gặp lại bạn.', templateLong: 'Chào mừng bạn quay lại! Đã lâu không gặp.', delay: 2000, hideAfter: 8000 }) }
+    loyalty: { type: widgetSettingsSchema, default: () => ({ enabled: false, template: 'Chương trình Loyalty' }) },
+    welcome: { type: widgetSettingsSchema, default: () => ({ enabled: false, template: 'Chào mừng bạn quay lại! Rất vui được gặp lại bạn.', delay: 2000, hideAfter: 8000 }) }
   },
+  seoEnabled: { type: Boolean, default: false },
+  seoKeywords: { type: String, default: '' },
   createdAt: { type: Date, default: Date.now }
 });
 

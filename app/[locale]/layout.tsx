@@ -46,6 +46,9 @@ export const metadata: Metadata = {
     icon: "/logo.png",
     apple: "/logo.png",
   },
+  other: {
+    'fb:app_id': '801234567890123',
+  },
   robots: {
     index: true,
     follow: true,

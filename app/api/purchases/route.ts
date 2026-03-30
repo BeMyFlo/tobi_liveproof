@@ -25,7 +25,6 @@ export async function POST(req: NextRequest) {
       customerEmail: customerEmail
     });
     
-    console.log(`Real purchase recorded for ${user.email}: ${product}`);
 
     return NextResponse.json({ 
       success: true, 

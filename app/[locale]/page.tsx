@@ -4,7 +4,7 @@ import { useTranslations } from 'next-intl';
 import MarketingNavbar from '@/components/MarketingNavbar';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Eye, ShoppingCart, Zap, Shield, BarChart3, Globe, ArrowRight, Play, Check, MousePointer2, Timer, Flame, TrendingUp } from 'lucide-react';
+import { Eye, ShoppingCart, Zap, Shield, BarChart3, Globe, ArrowRight, Play, Check, MousePointer2, Timer, Flame, TrendingUp, Target, Rocket, Facebook, Twitter, Instagram, Github, Mail } from 'lucide-react';
 import { useState } from 'react';
 
 export default function LandingPage() {
@@ -19,7 +19,7 @@ export default function LandingPage() {
       <MarketingNavbar />
       
       {/* Hero Section */}
-      <section className="relative pt-32 md:pt-44 pb-20 md:pb-32 px-4 md:px-6">
+      <section className="relative pt-32 md:pt-44 pb-20 md:pb-32 px-4 md:px-6 will-change-transform">
         {/* Glow Effects - Responsive position */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[600px] md:h-[800px] bg-[radial-gradient(circle_at_top,rgba(59,130,246,0.1),transparent_70%)] -z-10 blur-[80px] md:blur-[120px]" />
         <div className="absolute top-[15%] right-[-20%] md:right-[-10%] w-[60%] md:w-[40%] h-[40%] bg-purple-600/5 md:bg-purple-600/10 blur-[80px] md:blur-[120px] rounded-full -z-10" />
@@ -28,7 +28,7 @@ export default function LandingPage() {
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="inline-flex items-center gap-2 px-4 md:px-6 py-2 rounded-full bg-blue-600/10 border border-blue-500/20 text-blue-400 text-[9px] md:text-[11px] font-[900] uppercase tracking-[0.3em] backdrop-blur-md italic"
+            className="inline-flex items-center gap-2 px-4 md:px-6 py-2 rounded-full bg-blue-600/10 dark:bg-blue-600/10 border border-blue-500/20 text-blue-600 dark:text-blue-400 text-[9px] md:text-[11px] font-[900] uppercase tracking-[0.3em] backdrop-blur-md italic"
           >
             <Zap size={12} fill="currentColor" />
             TOBI LIVEPROOF
@@ -49,7 +49,7 @@ export default function LandingPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.8 }}
-            className="text-base md:text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed font-semibold italic px-4"
+            className="text-base md:text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed font-semibold italic px-4"
           >
             {t('hero.subtitle')}
           </motion.p>
@@ -69,7 +69,7 @@ export default function LandingPage() {
             </Link>
             <button 
               onClick={() => setShowDemo(true)}
-              className="w-full sm:w-auto px-8 md:px-10 py-4 md:py-5 bg-white/5 hover:bg-white/10 text-white font-[900] rounded-2xl border border-white/10 transition-all flex items-center justify-center gap-2 shadow-sm uppercase tracking-widest text-[10px] md:text-xs italic backdrop-blur-md"
+              className="w-full sm:w-auto px-8 md:px-10 py-4 md:py-5 bg-slate-100 dark:bg-white/5 hover:bg-slate-200 dark:hover:bg-white/10 text-slate-900 dark:text-white font-[900] rounded-2xl border border-black/5 dark:border-white/10 transition-all flex items-center justify-center gap-2 shadow-sm uppercase tracking-widest text-[10px] md:text-xs italic backdrop-blur-md"
             >
               <Play size={18} fill="currentColor" />
               {t('hero.demo')}
@@ -131,8 +131,8 @@ export default function LandingPage() {
                           {/* Main Content Mock */}
                           <div className="col-span-12 sm:col-span-10 p-4 md:p-10 space-y-4 md:space-y-8">
                              <div className="flex justify-between items-center">
-                               <h2 className="text-xs md:text-2xl font-black italic uppercase italic tracking-tight">{tWidgets('title')}</h2>
-                               <button onClick={() => setIsPreviewActive(false)} className="text-[8px] md:text-xs font-black text-slate-500 hover:text-white uppercase">✕ {tLanding('close')}</button>
+                               <h2 className="text-xs md:text-2xl font-black italic uppercase italic tracking-tight text-white">{tWidgets('title')}</h2>
+                               <button onClick={() => setIsPreviewActive(false)} className="text-[8px] md:text-xs font-black text-slate-400 hover:text-white uppercase">✕ {tLanding('close')}</button>
                              </div>
                              <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-6">
                                {[tWidgets('viewers.title'), tWidgets('purchases.title'), tWidgets('exitIntent.title')].map((name, i) => (
@@ -265,8 +265,55 @@ export default function LandingPage() {
         )}
       </AnimatePresence>
 
+      {/* About Section */}
+      <section id="about" className="py-20 md:py-40 px-4 md:px-6 relative overflow-hidden bg-white dark:bg-slate-950 will-change-transform">
+        <div className="absolute top-1/2 left-0 w-[60%] h-[60%] bg-blue-600/5 blur-[120px] -z-10 rounded-full" />
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16 md:mb-24 space-y-4 md:space-y-6">
+            <h2 className="text-3xl md:text-6xl font-black tracking-tight italic uppercase">{tLanding('aboutTitle')}</h2>
+            <p className="text-slate-500 font-black uppercase tracking-[0.2em] md:tracking-[0.4em] text-[10px] md:text-sm italic">{tLanding('aboutSubtitle')}</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center">
+            <motion.div 
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="space-y-8"
+            >
+              <div className="glass-card p-10 md:p-14 rounded-[3rem] border border-black/5 dark:border-white/5 bg-slate-50/50 dark:bg-white/5 relative group">
+                <div className="absolute -top-6 -left-6 w-16 h-16 bg-blue-600 rounded-2xl flex items-center justify-center shadow-xl shadow-blue-600/30 group-hover:scale-110 transition-transform">
+                  <Target size={32} className="text-white" />
+                </div>
+                <h3 className="text-2xl md:text-3xl font-black italic uppercase mb-6 tracking-tight text-slate-900 dark:text-white">{tLanding('missionTitle')}</h3>
+                <p className="text-slate-600 dark:text-slate-400 font-semibold leading-relaxed text-base md:text-lg">
+                  {tLanding('missionDesc')}
+                </p>
+              </div>
+            </motion.div>
+
+            <motion.div 
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="space-y-8"
+            >
+               <div className="glass-card p-10 md:p-14 rounded-[3rem] border border-black/5 dark:border-white/5 bg-slate-50/50 dark:bg-white/5 relative group">
+                <div className="absolute -top-6 -left-6 w-16 h-16 bg-purple-600 rounded-2xl flex items-center justify-center shadow-xl shadow-purple-600/30 group-hover:scale-110 transition-transform">
+                  <Rocket size={32} className="text-white" />
+                </div>
+                <h3 className="text-2xl md:text-3xl font-black italic uppercase mb-6 tracking-tight text-slate-900 dark:text-white">{tLanding('goalTitle')}</h3>
+                <p className="text-slate-600 dark:text-slate-400 font-semibold leading-relaxed text-base md:text-lg">
+                  {tLanding('goalDesc')}
+                </p>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       {/* Features Grid */}
-      <section id="features" className="py-20 md:py-40 px-4 md:px-6 bg-slate-950">
+      <section id="features" className="py-20 md:py-40 px-4 md:px-6 bg-white dark:bg-slate-950 will-change-transform">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16 md:mb-24 space-y-4 md:space-y-6">
             <h2 className="text-3xl md:text-6xl font-black tracking-tight italic uppercase">{tLanding('featuresTitle')}</h2>
@@ -285,7 +332,7 @@ export default function LandingPage() {
       </section>
 
       {/* Pricing Section */}
-      <section id="pricing" className="py-20 md:py-40 px-4 md:px-6 relative overflow-hidden">
+      <section id="pricing" className="py-20 md:py-40 px-4 md:px-6 relative overflow-hidden will-change-transform">
         <div className="absolute bottom-0 right-0 w-[80%] md:w-[50%] h-[50%] bg-blue-600/5 md:bg-blue-600/10 blur-[100px] md:blur-[150px] -z-10" />
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16 md:mb-24 space-y-4 md:space-y-6">
@@ -318,17 +365,59 @@ export default function LandingPage() {
       </section>
       
       {/* Footer */}
-      <footer className="py-16 md:py-24 border-t border-white/5 px-4 md:px-6 bg-slate-950/50 backdrop-blur-lg">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8 md:gap-12 text-slate-500 font-black uppercase text-[8px] md:text-[10px] tracking-[0.2em] md:tracking-[0.3em] italic">
-            <div className="flex items-center gap-3 text-white not-italic shrink-0">
-              <div className="w-8 h-8 md:w-10 md:h-10 bg-blue-600 rounded-xl flex items-center justify-center font-black text-white text-lg shadow-lg shadow-blue-600/20">L</div>
-              <span className="text-base md:text-lg font-black tracking-tighter">LiveProof</span>
+      <footer className="py-24 md:py-32 border-t border-white/5 px-4 md:px-6 bg-slate-950 relative overflow-hidden">
+        {/* Glow behind footer */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[300px] bg-blue-600/5 blur-[100px] -z-0" />
+        
+        <div className="max-w-6xl mx-auto relative z-10">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-16 mb-20 md:mb-24">
+            {/* Branding Column */}
+            <div className="col-span-1 md:col-span-2 space-y-8">
+              <Link href="#" className="flex items-center gap-4 group">
+                <img src="/logo.png" alt="LiveProof" className="w-14 h-14 md:w-16 md:h-16 object-contain drop-shadow-2xl transition-transform group-hover:scale-110" />
+                <span className="text-2xl md:text-3xl font-black tracking-tighter italic uppercase text-white">LiveProof</span>
+              </Link>
+              <p className="text-slate-400 text-sm md:text-base font-semibold leading-relaxed max-w-sm italic">
+                {tLanding('missionDesc').split('.')[0]}. {tLanding('rights').includes('reserved') ? 'Build trust, boost sales, and dominate your niche with Social Proof.' : 'Xây dựng niềm tin, thúc đẩy doanh số và làm chủ thị trường với Social Proof.'}
+              </p>
+              <div className="flex gap-4">
+                {[Facebook, Twitter, Instagram, Github].map((Icon, i) => (
+                  <Link key={i} href="#" className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-slate-400 hover:text-white hover:bg-white/10 transition-all border border-white/5">
+                    <Icon size={18} />
+                  </Link>
+                ))}
+              </div>
             </div>
-            <span className="text-center">&copy; 2024 Tobi LiveProof. {tLanding('rights')}</span>
-            <div className="flex gap-6 md:gap-10">
-              <Link href="#" className="hover:text-white transition-all text-[10px] md:text-xs">{tLanding('privacy')}</Link>
-              <Link href="#" className="hover:text-white transition-all text-[10px] md:text-xs">{tLanding('terms')}</Link>
+
+            {/* Links Columns */}
+            <div className="space-y-6">
+              <h4 className="text-white font-[900] uppercase text-xs tracking-[0.2em] italic">{tLanding('rights').includes('reserved') ? 'Product' : 'Sản phẩm'}</h4>
+              <ul className="space-y-4 text-slate-400 font-bold text-xs md:text-sm uppercase italic">
+                <li><Link href="#features" className="hover:text-blue-400 transition-all">{t('common.features')}</Link></li>
+                <li><Link href="#pricing" className="hover:text-blue-400 transition-all">{t('common.pricing')}</Link></li>
+                <li><Link href="/login" className="hover:text-blue-400 transition-all">{t('common.login')}</Link></li>
+              </ul>
             </div>
+
+            <div className="space-y-6">
+              <h4 className="text-white font-[900] uppercase text-xs tracking-[0.2em] italic">{tLanding('rights').includes('reserved') ? 'Company' : 'Công ty'}</h4>
+              <ul className="space-y-4 text-slate-400 font-bold text-xs md:text-sm uppercase italic">
+                <li><Link href="#about" className="hover:text-blue-400 transition-all">{tLanding('aboutTitle')}</Link></li>
+                <li><Link href="#" className="hover:text-blue-400 transition-all">{tLanding('privacy')}</Link></li>
+                <li><Link href="#" className="hover:text-blue-400 transition-all">{tLanding('terms')}</Link></li>
+                <li><Link href="#" className="hover:text-blue-400 transition-all flex items-center gap-2 text-white/50 pointer-events-none italic opacity-50"><Mail size={14}/> thong.haminh@gmail.com</Link></li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Bottom Bar */}
+          <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-slate-500 font-black uppercase text-[10px] tracking-[0.2em] italic">
+            <span>&copy; 2024 Tobi LiveProof. {tLanding('rights')}</span>
+            <div className="flex items-center gap-3 bg-white/5 px-4 py-2 rounded-full border border-white/5 text-[8px] md:text-[10px]">
+              <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+              {tLanding('rights').includes('reserved') ? 'System Status: Optimal' : 'Hệ thống: Hoạt động tốt'}
+            </div>
+          </div>
         </div>
       </footer>
     </main>
@@ -339,25 +428,25 @@ function PricingCard({ plan, price, desc, features, featured }: any) {
   const t = useTranslations('common');
   const tLanding = useTranslations('landing');
   return (
-    <div className={`p-1 w-full rounded-[2.5rem] md:rounded-[3.5rem] transition-all duration-500 ${featured ? 'bg-gradient-to-b from-blue-500 to-purple-600' : 'bg-white/5'}`}>
-       <div className="bg-slate-950 h-full w-full rounded-[2.4rem] md:rounded-[3.4rem] p-8 md:p-12 flex flex-col gap-6 md:gap-8">
+    <div className={`p-1 w-full rounded-[2.5rem] md:rounded-[3.5rem] transition-all duration-500 ${featured ? 'bg-gradient-to-b from-blue-500 to-purple-600' : 'bg-black/5 dark:bg-white/5'}`}>
+       <div className="bg-white dark:bg-slate-950 h-full w-full rounded-[2.4rem] md:rounded-[3.4rem] p-8 md:p-12 flex flex-col gap-6 md:gap-8">
           <div className="space-y-1.5 md:space-y-2 text-left">
              <div className="text-blue-500 font-black uppercase tracking-widest text-[8px] md:text-[10px] italic">{desc}</div>
-             <h3 className="text-2xl md:text-3xl font-black italic uppercase tracking-tight">{plan}</h3>
+             <h3 className="text-2xl md:text-3xl font-black italic uppercase tracking-tight text-slate-900 dark:text-white">{plan}</h3>
           </div>
-          <div className="flex items-baseline gap-1">
+          <div className="flex items-baseline gap-1 text-slate-900 dark:text-white">
              <span className="text-3xl md:text-5xl font-[900] tracking-tighter uppercase">{price}</span>
              <span className="text-slate-500 font-bold uppercase text-[10px] md:text-xs">/{tLanding('rights').includes('reserved') ? 'Month' : 'Tháng'}</span>
           </div>
           <div className="space-y-3 md:space-y-4 flex-1 text-left">
              {features.map((f: string) => (
-               <div key={f} className="flex items-center gap-3 text-[12px] md:text-sm text-slate-400 font-medium">
+               <div key={f} className="flex items-center gap-3 text-[12px] md:text-sm text-slate-600 dark:text-slate-400 font-medium">
                   <Check size={16} className="text-green-500 shrink-0" />
                   <span className="truncate">{f}</span>
                </div>
              ))}
           </div>
-          <Link href="/register" className={`py-3 md:py-4 text-center rounded-xl md:rounded-2xl font-black italic uppercase tracking-widest text-[10px] md:text-xs transition-all ${featured ? 'bg-blue-600 hover:bg-blue-700 text-white shadow-xl shadow-blue-600/20' : 'bg-white/5 hover:bg-white/10 text-white'}`}>
+          <Link href="/register" className={`py-3 md:py-4 text-center rounded-xl md:rounded-2xl font-black italic uppercase tracking-widest text-[10px] md:text-xs transition-all ${featured ? 'bg-blue-600 hover:bg-blue-700 text-white shadow-xl shadow-blue-600/20' : 'bg-slate-200 dark:bg-white/5 hover:bg-slate-300 dark:hover:bg-white/10 text-slate-900 dark:text-white'}`}>
              {t('getStarted')}
           </Link>
        </div>
@@ -375,12 +464,12 @@ function FeatureCard({ title, desc, icon: Icon, color }: any) {
   };
 
   return (
-    <div className="group glass-card p-8 md:p-12 rounded-[2.5rem] md:rounded-[4rem] border border-white/5 bg-white/5 hover:bg-white/10 transition-all duration-500 hover:-translate-y-2 shadow-2xl text-left">
+    <div className="group glass-card p-8 md:p-12 rounded-[2.5rem] md:rounded-[4rem] border border-black/5 dark:border-white/5 bg-slate-50/50 dark:bg-white/5 hover:bg-slate-100/50 dark:hover:bg-white/10 transition-all duration-500 hover:-translate-y-2 shadow-2xl text-left will-change-transform">
       <div className={`w-14 h-14 md:w-20 md:h-20 rounded-2xl md:rounded-[2rem] flex items-center justify-center mb-6 md:mb-10 border transition-all duration-500 group-hover:text-white shadow-3xl ${colors[color]}`}>
         <Icon size={32} />
       </div>
-      <h3 className="text-xl md:text-2xl font-black mb-4 md:mb-6 text-white italic uppercase tracking-tight">{title}</h3>
-      <p className="text-slate-400 font-semibold leading-relaxed text-[14px] md:text-base">{desc}</p>
+      <h3 className="text-xl md:text-2xl font-black mb-4 md:mb-6 text-slate-900 dark:text-white italic uppercase tracking-tight">{title}</h3>
+      <p className="text-slate-600 dark:text-slate-400 font-semibold leading-relaxed text-[14px] md:text-base">{desc}</p>
     </div>
   );
 }

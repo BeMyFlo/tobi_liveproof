@@ -14,7 +14,18 @@ export async function GET(req: NextRequest) {
     const user = await User.findOne({ apiKey });
     if (!user) return NextResponse.json({ error: 'User not found' }, { status: 404 });
 
-    console.log('Tobi LiveProof Backend: Widgets in DB', user.widgets);
+    // Security check: Whitelisted domains
+    const origin = req.headers.get('origin') || req.headers.get('referer');
+    if (user.allowedDomains?.length > 0 && origin) {
+      const isAuthorized = (user.allowedDomains as string[]).some((d: string) => d && origin.includes(d.trim()));
+      if (!isAuthorized) {
+        return NextResponse.json({ error: 'This domain is not authorized to use this API key.' }, { 
+            status: 403, 
+            headers: { 'Access-Control-Allow-Origin': '*' } 
+        });
+      }
+    }
+
     const enabledWidgets: any = {};
     if (user.widgets) {
       Object.keys(user.widgets).forEach(key => {
@@ -23,7 +34,6 @@ export async function GET(req: NextRequest) {
         }
       });
     }
-    console.log('Tobi LiveProof Backend: Enabled Widgets', enabledWidgets);
 
     // 2. Fetch Active Campaigns
     const now = new Date();

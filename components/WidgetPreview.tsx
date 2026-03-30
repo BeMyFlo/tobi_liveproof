@@ -26,7 +26,6 @@ export default function WidgetPreview({ apiKey }: WidgetPreviewProps) {
     script.setAttribute('data-key', apiKey as string);
     
     script.onload = () => {
-       console.log('Tobi LiveProof: Preview script loaded');
        setIsLoaded(true);
     };
 

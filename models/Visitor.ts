@@ -6,7 +6,12 @@ const visitorSchema = new mongoose.Schema({
   firstVisit: { type: Date, default: Date.now },
   lastVisit: { type: Date, default: Date.now },
   visitCount: { type: Number, default: 1 },
-  recentPages: [{ type: String }], // Store the last few pages visited
+  viewHistory: [{
+    url: String,
+    title: String,
+    image: String,
+    timestamp: { type: Date, default: Date.now }
+  }],
   metadata: {
     ip: String,
     userAgent: String,

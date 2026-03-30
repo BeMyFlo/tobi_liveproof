@@ -59,14 +59,24 @@
     document.head.appendChild(script);
   }
 
+  function getProductInfo() {
+    const og = (s) => document.querySelector(`meta[property="og:${s}"]`)?.content;
+    return {
+      title: og('title') || document.title,
+      image: og('image') || '',
+      url: window.location.href
+    };
+  }
+  
   function initVisitorTracking(widgets) {
     let vid = localStorage.getItem('lp_vid') || ('vid_'+Math.random().toString(36).substr(2,9)+Date.now());
     localStorage.setItem('lp_vid', vid);
     const email = window.lp_email || localStorage.getItem('lp_email');
+    const product = getProductInfo();
     
     fetch(`${baseUrl}/api/track-visitor`, {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ key, visitorId: vid, url: window.location.href, email })
+      body: JSON.stringify({ key, visitorId: vid, url: window.location.href, email, product })
     }).then(r => r.json()).then(res => {
       const isNew = !sessionStorage.getItem('lp_session_seen');
       if (widgets?.welcome?.enabled && res.isReturning && isNew) showGreetingToast(widgets.welcome, res);
@@ -74,7 +84,53 @@
       if (widgets?.loyalty?.enabled && res.allMilestones?.length) {
         initWidget('loyalty', { ...widgets.loyalty, orderCount: res.orderCount, milestones: res.allMilestones });
       }
+      if (res.upsell && !sessionStorage.getItem('lp_upsell_seen')) {
+        showUpsellWidget(res.upsell);
+      }
     });
+  }
+
+  function showUpsellWidget(u) {
+    console.log('Tobi LiveProof: Hiển thị Upsell ->', u.title);
+    const toast = document.createElement('div');
+    toast.style.cssText = `background:rgba(15,23,42,0.95);backdrop-filter:blur(15px);color:white;padding:20px;border-radius:24px;font-family:Inter,sans-serif;box-shadow:0 20px 50px rgba(0,0,0,0.4);display:flex;align-items:center;gap:15px;max-width:350px;animation:lp-pop 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);border:1px solid rgba(255,255,255,0.1);position:relative;`;
+    
+    // Xử lý ảnh NULL
+    const imgHtml = u.image && u.image !== 'NULL' 
+      ? `<img src="${u.image}" style="width:100%;height:100%;object-fit:cover" />`
+      : `<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:#334155;color:white;font-size:24px;">📦</div>`;
+
+    toast.innerHTML = `
+      <button id="lp-upsell-close" style="position:absolute;top:10px;right:10px;background:none;border:none;color:white;opacity:0.5;cursor:pointer;font-size:16px;">&times;</button>
+      <div style="width:70px;height:70px;background:white;border-radius:14px;overflow:hidden;flex-shrink:0;">
+        ${imgHtml}
+      </div>
+      <div style="flex-grow:1">
+        <p style="margin:0 0 4px;font-size:10px;font-weight:900;color:#3b82f6;text-transform:uppercase;letter-spacing:1px">${u.template || 'CÓ THỂ BẠN QUAN TÂM'}</p>
+        <h4 style="margin:0 0 10px;font-size:13px;font-weight:800;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;padding-right:15px;">${u.title}</h4>
+        <button id="lp-upsell-btn" style="background:#3b82f6;color:white;border:none;padding:6px 14px;border-radius:8px;font-weight:900;font-size:10px;cursor:pointer;text-transform:uppercase">Xem ngay</button>
+      </div>
+    `;
+
+    getContainer('bottom-right').appendChild(toast);
+    
+    toast.querySelector('#lp-upsell-btn').onclick = () => { 
+      sessionStorage.setItem('lp_upsell_seen', 'true'); 
+      window.location.href = u.url; 
+    };
+    
+    toast.querySelector('#lp-upsell-close').onclick = () => {
+      sessionStorage.setItem('lp_upsell_seen', 'true');
+      toast.remove();
+    };
+
+    setTimeout(() => { 
+      if (toast.parentNode) {
+        toast.style.opacity='0'; 
+        toast.style.transform='scale(0.8)'; 
+        setTimeout(() => toast.remove(), 500); 
+      }
+    }, 15000);
   }
 
   function showGreetingToast(s, res) {

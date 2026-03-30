@@ -3,6 +3,12 @@
 @tailwind utilities;
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
   :root {
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
@@ -57,9 +63,15 @@ body {
   @apply bg-slate-950 text-white selection:bg-blue-500/30;
 }
 
+@layer utilities {
+  .will-change-transform {
+    will-change: transform;
+  }
+}
+
 @layer components {
   .glass-card {
-    @apply backdrop-blur-3xl bg-slate-100/30 dark:bg-white/5 border border-slate-200 dark:border-white/5 shadow-xl;
+    @apply backdrop-blur-3xl bg-slate-100/30 dark:bg-white/5 border border-slate-200 dark:border-white/5 shadow-xl will-change-transform;
   }
 }
 
@@ -81,4 +93,26 @@ body {
 }
 ::-webkit-scrollbar-thumb {
   @apply bg-slate-300 dark:bg-white/10 rounded-full hover:bg-slate-400 dark:hover:bg-white/20;
+}
+
+/* Lenis Smooth Scroll Recommended Styles */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
 }

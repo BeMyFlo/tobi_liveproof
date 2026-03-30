@@ -5,11 +5,8 @@ import Payment from '@/models/Payment';
 import crypto from 'crypto';
 
 export async function POST(req: NextRequest) {
-  console.log('--- SEPAY WEBHOOK: Incoming Request ---');
   try {
     const body = await req.json();
-    console.log('SePay Payload:', JSON.stringify(body, null, 2));
-
     const signature = req.headers.get('x-sepay-signature');
     
     // SePay Webhook Payload structure can vary. Handling both direct and nested formats:
@@ -17,7 +14,6 @@ export async function POST(req: NextRequest) {
     const amount_in = body.amount_in || body.transaction?.transaction_amount;
     const transaction_content = body.transaction_content || body.order?.order_description;
 
-    console.log(`Extracted Code: ${code}, Amount: ${amount_in}`);
 
     if (!code && !transaction_content) return NextResponse.json({ success: false, message: 'Missing transaction data' }, { status: 400 });
 
@@ -41,7 +37,6 @@ export async function POST(req: NextRequest) {
     }
 
     if (!payment) {
-        console.log(`Payment not found. Incoming Code: ${code}, Content: ${transaction_content}`);
         return NextResponse.json({ success: false, message: 'Payment record not found or already processed' }, { status: 404 });
     }
 
@@ -61,8 +56,6 @@ export async function POST(req: NextRequest) {
     payment.status = 'PAID';
     payment.paymentLinkId = body.transaction?.id || body.transaction?.transaction_id || body.id; 
     await payment.save();
-
-    console.log(`Successfully upgraded user ${user.email} to ${payment.plan} via SePay.`);
 
     return NextResponse.json({ success: true, message: 'Payment processed successfully' });
 

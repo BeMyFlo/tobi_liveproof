@@ -15,6 +15,7 @@
     "home": "Trang chủ",
     "pricing": "Bảng giá",
     "features": "Tính năng",
+    "about": "Về chúng tôi",
     "getStarted": "Bắt đầu ngay",
     "loading": "Đang tải...",
     "copy": "Sao chép",
@@ -79,6 +80,10 @@
     "welcome": {
       "title": "Chào mừng khách quay lại",
       "desc": "Lời chào cá nhân hóa cho khách hàng cũ (> 30 ngày)"
+    },
+    "upsell": {
+      "title": "Smart Upsell (Gợi ý thông minh)",
+      "desc": "Tự động gợi ý sản phẩm liên quan dựa trên hành vi khách tham quan."
     },
     "loyalty": {
       "title": "Chương trình Loyalty (Cột mốc)",
@@ -208,6 +213,12 @@
     "featuresSubtitle": "Thiết kế tinh tế, tích hợp dễ dàng",
     "pricingTitle": "Bảng Giá Dịch Vụ",
     "pricingSubtitle": "Chọn gói phù hợp để bắt đầu ngay hôm nay",
+    "aboutTitle": "Về Chúng Tôi",
+    "aboutSubtitle": "Sứ mệnh của LiveProof",
+    "missionTitle": "Biến Website thành Cỗ Máy Bán Hàng",
+    "missionDesc": "LiveProof ra đời với sứ mệnh giúp các doanh nghiệp số xây dựng niềm tin tức thì với khách hàng. Chúng tôi tin rằng bằng cách hiển thị các hoạt động thực tế, website của bạn sẽ trở nên sống động và đáng tin cậy hơn bao giờ hết.",
+    "goalTitle": "Mục Tiêu Doanh Nghiệp",
+    "goalDesc": "Chúng tôi tập trung vào việc cung cấp các công cụ Social Proof mạnh mẽ, dễ sử dụng, giúp tăng tỷ lệ chuyển đổi và doanh số mà không cần thay đổi cấu trúc website của bạn.",
     "growthChart": "Biểu đồ tăng trưởng doanh thu trực tuyến",
     "close": "Đóng",
     "privacy": "Quyền riêng tư",

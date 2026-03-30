@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
-import { Settings, Eye, ShoppingCart, ToggleLeft, ToggleRight, Save, Info, Zap, MousePointer2, AlertTriangle, Check, CheckCircle2 } from 'lucide-react';
+import { Settings, Eye, ShoppingCart, ToggleLeft, ToggleRight, Save, Info, Zap, MousePointer2, AlertTriangle, Check, CheckCircle2, TrendingUp } from 'lucide-react';
 import CustomSelect from '@/components/dashboard/CustomSelect';
 
 export default function WidgetsPage() {
@@ -72,11 +72,11 @@ export default function WidgetsPage() {
       </header>
 
       <div className="grid grid-cols-1 gap-8 pb-10">
-         {['viewers', 'purchases', 'exitIntent', 'retention', 'scarcity', 'welcome'].map((type) => (
+         {['viewers', 'purchases', 'upsell', 'exitIntent', 'retention', 'scarcity', 'welcome'].map((type) => (
            <WidgetConfigCard 
              key={type}
              type={type}
-             icon={type === 'viewers' ? Eye : type === 'purchases' ? ShoppingCart : type === 'scarcity' ? AlertTriangle : MousePointer2}
+             icon={type === 'viewers' ? Eye : type === 'purchases' ? ShoppingCart : type === 'upsell' ? TrendingUp : type === 'scarcity' ? AlertTriangle : MousePointer2}
              title={t(`${type}.title`)}
              desc={t(`${type}.desc`)}
              enabled={widgets[type]?.enabled || false}
@@ -194,6 +194,33 @@ function WidgetConfigCard({ type, icon: Icon, title, desc, enabled, onToggle, se
              </div>
            )}
 
+           {type === 'upsell' && (
+             <div className="md:col-span-2 lg:col-span-3 p-5 rounded-2xl bg-blue-500/5 border border-blue-500/10 space-y-3">
+               <div className="flex items-center gap-2">
+                 <label className="text-[11px] font-bold text-blue-600 dark:text-blue-400 uppercase tracking-widest">
+                   🔍 Product URL Pattern (Tùy chọn)
+                 </label>
+                 <div className="group relative cursor-help">
+                   <Info size={14} className="text-slate-400" />
+                   <div className="absolute bottom-full mb-3 left-0 w-72 p-4 bg-slate-900 text-white text-[10px] rounded-2xl opacity-0 group-hover:opacity-100 transition-all pointer-events-none z-10 italic shadow-2xl leading-relaxed">
+                     Nhập từ khóa trong URL sản phẩm của bạn (ví dụ: "san-pham", "products", "shop").<br/><br/>
+                     Hệ thống sẽ tự nhận diện trang sản phẩm nếu để trống.
+                   </div>
+                 </div>
+               </div>
+               <input
+                 type="text"
+                 value={settings.productPattern || ''}
+                 onChange={(e) => onUpdate('productPattern', e.target.value)}
+                 placeholder='Ví dụ: san-pham (để trống = tự nhận diện)'
+                 className="w-full bg-white dark:bg-black/20 border border-blue-200 dark:border-blue-500/20 rounded-xl px-4 py-3.5 text-sm font-mono focus:outline-none focus:border-blue-500/50 transition-all shadow-inner"
+               />
+               <p className="text-[10px] text-slate-400 dark:text-gray-500 italic">
+                 Nếu URL sản phẩm của bạn là <code>/san-pham/ten-sp/</code>, nhập <strong>san-pham</strong>. Hệ thống sẽ bỏ qua trang <code>/san-pham/</code> (listing) và chỉ theo dõi <code>/san-pham/ten-sp/</code> (sản phẩm).
+               </p>
+             </div>
+           )}
+
           <div className="space-y-3">
              <label className="text-[11px] font-bold text-slate-400 dark:text-gray-500 uppercase tracking-widest pl-1">{t('settings.delay')}</label>
              <input 
@@ -274,9 +301,11 @@ function WidgetConfigCard({ type, icon: Icon, title, desc, enabled, onToggle, se
              </div>
              <textarea 
                value={Array.isArray(settings.targetUrls) ? settings.targetUrls.join('\n') : ''} 
-               onChange={(e) => onUpdate('targetUrls', e.target.value.split('\n'))}
+               onChange={(e) => onUpdate('targetUrls', e.target.value.split('\n').filter((v: string) => v.trim() !== ''))}
                className="w-full h-32 bg-slate-50 dark:bg-black/20 border border-slate-200 dark:border-white/10 rounded-2xl px-6 py-4 text-xs font-mono focus:outline-none focus:border-blue-500/50 transition-all resize-none shadow-inner"
-               placeholder="https://mysite.com/product-a"
+               placeholder={type === 'upsell' 
+                 ? "⚠️ KHUYẾN NGHỊ: Để trống phần này cho Upsell.\nWidget sẽ tự động hiện trên tất cả trang sản phẩm dựa theo 'Product URL Pattern' ở trên." 
+                 : "https://mysite.com/product-a"}
              />
           </div>
         </div>

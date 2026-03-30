@@ -91,13 +91,13 @@ export default function BillingPage() {
           <p className="text-gray-400 text-[14px] md:text-lg font-medium italic">{t('subtitle')}</p>
         </header>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
            {plans.map((plan) => {
              const isCurrent = user?.plan === plan.id;
              return (
                <div 
                  key={plan.id}
-                 className={`relative glass-card p-6 md:p-10 rounded-[2rem] md:rounded-[2.5rem] border transition-all hover:border-white/10 duration-500 overflow-hidden flex flex-col ${plan.popular ? 'border-blue-500/30 bg-blue-500/[0.03]' : 'border-white/5 bg-white/5'}`}
+                 className={`relative glass-card p-8 md:p-12 rounded-[2.5rem] md:rounded-[3rem] border transition-all hover:border-white/10 duration-500 overflow-hidden flex flex-col ${plan.popular ? 'border-blue-500/30 bg-blue-500/[0.03]' : 'border-white/5 bg-white/5'}`}
                >
                   {plan.popular && (
                     <div className="absolute top-0 right-0 px-4 md:px-6 py-2 bg-blue-600 text-[9px] md:text-[10px] font-black uppercase tracking-widest rounded-bl-xl shadow-lg shadow-blue-500/20 italic">

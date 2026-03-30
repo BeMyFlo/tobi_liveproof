@@ -2,19 +2,47 @@
 
 import { useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
-import { Copy, Terminal, Globe, Layout, CheckCircle2, Zap, X } from 'lucide-react';
+import { Copy, Terminal, Globe, Layout, CheckCircle2, Zap, X, AlertTriangle } from 'lucide-react';
 
 export default function EmbedPage() {
   const [user, setUser] = useState<any>(null);
   const [copied, setCopied] = useState(false);
+  const [allowedDomains, setAllowedDomains] = useState<string[]>([]);
+  const [domainInput, setDomainInput] = useState('');
+  const [savingDomains, setSavingDomains] = useState(false);
   const t = useTranslations('embed');
   const tCommon = useTranslations('common');
 
   useEffect(() => {
     fetch('/api/user/me')
       .then(res => res.json())
-      .then(data => setUser(data.user));
+      .then(data => {
+        setUser(data.user);
+        setAllowedDomains(data.user?.allowedDomains || []);
+      });
   }, []);
+
+  const saveDomains = async () => {
+    setSavingDomains(true);
+    await fetch('/api/user/settings', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ allowedDomains })
+    });
+    setSavingDomains(false);
+  };
+
+  const addDomain = () => {
+    const d = domainInput.trim().replace(/^https?:\/\//, '').replace(/\/$/, '');
+    if (d && !allowedDomains.includes(d)) {
+      setAllowedDomains([...allowedDomains, d]);
+      setDomainInput('');
+    }
+  };
+
+  const removeDomain = (d: string) => {
+    setAllowedDomains(allowedDomains.filter(x => x !== d));
+  };
 
   const baseUrl = typeof window !== 'undefined' ? window.location.origin : 'http://localhost:3000';
   
@@ -161,6 +189,70 @@ function liveproof_tracker($order_id) {
             </div>
          </div>
       </div>
+
+      {/* Domain Whitelisting Section */}
+      <section className="p-8 md:p-12 rounded-[2.5rem] bg-white dark:bg-slate-900/40 border border-slate-200 dark:border-white/5 space-y-8 shadow-sm text-left">
+         <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+            <div className="space-y-1">
+               <h3 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white uppercase flex items-center gap-3">
+                  <Globe className="text-blue-600" size={24} /> Domain Whitelist
+               </h3>
+               <p className="text-slate-500 dark:text-gray-400 text-sm italic font-medium">Bảo mật API Key của bạn bằng cách giới hạn trang web được phép chạy script.</p>
+            </div>
+            <button 
+               onClick={saveDomains}
+               disabled={savingDomains}
+               className="px-8 py-3 bg-blue-600 hover:bg-blue-700 disabled:opacity-50 text-white rounded-xl text-xs font-bold uppercase tracking-widest transition-all shadow-lg active:scale-95 flex items-center gap-2"
+            >
+               {savingDomains ? <Zap className="animate-spin" size={16} /> : <CheckCircle2 size={16} />}
+               Lưu Danh Sách
+            </button>
+         </div>
+
+         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+            <div className="space-y-4">
+               <div className="flex gap-2">
+                  <input 
+                     type="text" 
+                     value={domainInput}
+                     onChange={(e) => setDomainInput(e.target.value)}
+                     onKeyDown={(e) => e.key === 'Enter' && addDomain()}
+                     placeholder="ví dụ: website-cua-ban.com"
+                     className="flex-1 bg-slate-50 dark:bg-black/20 border border-slate-200 dark:border-white/10 rounded-xl px-4 py-3.5 text-sm font-medium focus:outline-none focus:border-blue-500/50 transition-all shadow-inner"
+                  />
+                  <button 
+                     onClick={addDomain}
+                     className="px-6 bg-slate-900 dark:bg-white text-white dark:text-black font-bold text-xs uppercase rounded-xl hover:bg-black dark:hover:bg-gray-100 transition-all"
+                  >
+                     Thêm
+                  </button>
+               </div>
+               <p className="text-[10px] text-slate-400 dark:text-gray-500 italic font-medium pl-1">Nhập tên miền (không cần http://). Ví dụ: google.com</p>
+            </div>
+
+            <div className="flex flex-wrap gap-3">
+               {allowedDomains.length === 0 ? (
+                  <div className="w-full p-6 border-2 border-dashed border-slate-200 dark:border-white/5 rounded-2xl flex flex-col items-center justify-center text-center space-y-2 opacity-60">
+                     <AlertTriangle size={24} className="text-yellow-500" />
+                     <p className="text-xs font-bold text-slate-500 uppercase tracking-widest">Chưa có domain nào được giới hạn</p>
+                     <p className="text-[10px] text-slate-400 italic">Mặc định script sẽ chạy trên mọi trang web.</p>
+                  </div>
+               ) : (
+                  allowedDomains.map(domain => (
+                     <div key={domain} className="flex items-center gap-3 pl-4 pr-2 py-2 bg-blue-50 dark:bg-blue-500/10 border border-blue-200 dark:border-blue-500/20 rounded-xl group transition-all hover:border-blue-500/50 shadow-sm">
+                        <span className="text-xs font-bold text-blue-700 dark:text-blue-300 italic">{domain}</span>
+                        <button 
+                           onClick={() => removeDomain(domain)}
+                           className="p-1.5 hover:bg-blue-200 dark:hover:bg-blue-500/20 rounded-lg text-blue-400 dark:text-blue-500 hover:text-red-500 transition-all"
+                        >
+                           <X size={14} />
+                        </button>
+                     </div>
+                  ))
+               )}
+            </div>
+         </div>
+      </section>
 
       {/* Integration Platforms */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">

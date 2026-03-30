@@ -34,7 +34,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     <div className="min-h-screen bg-white dark:bg-slate-950 text-slate-900 dark:text-white selection:bg-blue-500/30 transition-colors duration-500">
       <Sidebar plan={user?.plan} />
       <main className="lg:ml-64 p-4 md:p-8 lg:p-10 min-h-screen pt-24 lg:pt-10 transition-all duration-300">
-        <div className="max-w-6xl mx-auto text-[14px] lg:text-base leading-relaxed">
+        <div className="max-w-[1600px] mx-auto text-[14px] lg:text-base leading-relaxed">
           {children}
         </div>
       </main>

@@ -6,6 +6,7 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import { locales } from "@/lib/i18n";
 import { ThemeProvider } from "@/components/theme-provider";
+import SmoothScrolling from "@/components/SmoothScrolling";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -79,7 +80,9 @@ export default async function RootLayout({
           disableTransitionOnChange
         >
           <NextIntlClientProvider locale={locale} messages={messages}>
-            {children}
+            <SmoothScrolling>
+              {children}
+            </SmoothScrolling>
           </NextIntlClientProvider>
         </ThemeProvider>
       </body>

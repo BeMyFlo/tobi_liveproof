@@ -25,6 +25,7 @@ const widgetSettingsSchema = new mongoose.Schema({
   inventory: { type: [String], default: [] },
   targetSelector: { type: String, default: '' },
   templateLong: { type: String, default: '' },
+  productPattern: { type: String, default: '' }, // URL pattern to detect product pages (e.g. 'san-pham', 'products')
 }, { _id: false });
 
 const userSchema = new mongoose.Schema({
@@ -40,10 +41,12 @@ const userSchema = new mongoose.Schema({
     retention: { type: widgetSettingsSchema, default: () => ({ enabled: false, template: 'Thanks for staying! Use this code to checkout: {code}', discountEnabled: true }) },
     scarcity: { type: widgetSettingsSchema, default: () => ({ enabled: false, template: '🔥 Only {count} items left in stock!' }) },
     loyalty: { type: widgetSettingsSchema, default: () => ({ enabled: false, template: 'Chương trình Loyalty' }) },
-    welcome: { type: widgetSettingsSchema, default: () => ({ enabled: false, template: 'Chào mừng bạn quay lại! Rất vui được gặp lại bạn.', delay: 2000, hideAfter: 8000 }) }
+    welcome: { type: widgetSettingsSchema, default: () => ({ enabled: false, template: 'Chào mừng bạn quay lại! Rất vui được gặp lại bạn.', delay: 2000, hideAfter: 8000 }) },
+    upsell: { type: widgetSettingsSchema, default: () => ({ enabled: false, template: 'Có thể bạn quan tâm', position: 'bottom-right', style: 'dark' }) }
   },
   seoEnabled: { type: Boolean, default: false },
   seoKeywords: { type: String, default: '' },
+  allowedDomains: { type: [String], default: [] },
   createdAt: { type: Date, default: Date.now }
 });
 

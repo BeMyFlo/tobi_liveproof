@@ -11,7 +11,7 @@ export async function POST(req: NextRequest) {
     const decoded = verifyToken(token);
     if (!decoded) return NextResponse.json({ error: 'Invalid token' }, { status: 401 });
 
-    const { widgets, seoEnabled, seoKeywords } = await req.json();
+    const { widgets, seoEnabled, seoKeywords, allowedDomains } = await req.json();
 
     await dbConnect();
     
@@ -25,6 +25,7 @@ export async function POST(req: NextRequest) {
 
     if (seoEnabled !== undefined) user.seoEnabled = seoEnabled;
     if (seoKeywords !== undefined) user.seoKeywords = seoKeywords;
+    if (allowedDomains !== undefined) user.allowedDomains = allowedDomains;
     
     const savedUser = await user.save();
     

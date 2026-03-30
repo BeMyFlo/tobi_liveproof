@@ -15,6 +15,7 @@
     "home": "Home",
     "pricing": "Pricing",
     "features": "Features",
+    "about": "About",
     "getStarted": "Get Started",
     "loading": "Loading...",
     "copy": "Copy",
@@ -78,6 +79,10 @@
     "loyalty": {
       "title": "Welcome Back Guest",
       "desc": "Personalized greeting for returning customers (> 30 days)"
+    },
+    "upsell": {
+      "title": "Smart Upsell",
+      "desc": "Automatically recommend related products based on visitor behavior."
     },
     "settings": {
       "title": "Settings",
@@ -204,6 +209,12 @@
     "featuresSubtitle": "Elegant design, effortless integration",
     "pricingTitle": "Simple Pricing",
     "pricingSubtitle": "Choose the perfect plan to grow your business",
+    "aboutTitle": "About Us",
+    "aboutSubtitle": "The LiveProof Mission",
+    "missionTitle": "Turn Websites into Selling Machines",
+    "missionDesc": "LiveProof was born with the mission to help digital businesses build instant trust with their customers. We believe that by showing real activity, your website becomes more alive and trustworthy than ever.",
+    "goalTitle": "Business Goals",
+    "goalDesc": "We focus on providing powerful, easy-to-use Social Proof tools that increase conversion rates and sales without needing to change your website structure.",
     "growthChart": "Online Revenue Growth Chart",
     "close": "Close",
     "privacy": "Privacy",
